@@ -2,7 +2,7 @@ setwd("/Users/brandonkleinman/Desktop/MGSC410/FinalProject")
 #valid prices  7.99   11.99   179.99   299.99
 subscribers <- read.csv("Subscribers.csv")
 library("tidyverse")
-library("naivebayes")
+library("e1071")
 
 View(subscribers)
 nrow(subscribers)
@@ -17,6 +17,17 @@ subs <- within(subscribers2, {
   Purchase.Amount <- ifelse(Purchase.Amount > 1000, Purchase.Amount/1000000, Purchase.Amount)
   Purchase.Amount <- ifelse(Currency == "EUR", Purchase.Amount/1.2, ifelse(Currency == "GBP", Purchase.Amount/1.38, Purchase.Amount))
   Currency <- as.factor(Currency)
+  Push.Notifications <- as.factor(Push.Notifications)
+  Email.Subscriber <- as.factor(Email.Subscriber)
+  Lead.Platform <- as.factor(Lead.Platform)
+  User.Type <- as.factor(User.Type)
+  Country <- as.factor(Country)
+  Auto.Renew <- as.factor(Auto.Renew)
+  Demo.User <- as.factor(Demo.User)
+  Purchase.Store <- as.factor(Purchase.Store)
+  Subscription.Event.Type <- as.factor(Subscription.Event.Type)
+  Subscription.Type <- as.factor(Subscription.Type)
+  Language <- as.factor(Language)
   Send.Count <- as.numeric(Send.Count)
   Open.Count <- as.numeric(Open.Count)
   Click.Count <- as.numeric(Click.Count)
@@ -48,3 +59,7 @@ ggplot(subs, aes(x = Send.Count, y = Unique.Open.Count, color = Auto.Renew)) +
        # panel.grid.minor = element_blank(),
         #panel.border = element_blank(),
         #panel.background = element_blank())
+
+names(subs)
+glimpse(subs)
+
