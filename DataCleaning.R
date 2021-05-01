@@ -14,6 +14,9 @@ subs <- within(subscribers2, {
   Subscription.Start.Date <- as.Date(Subscription.Start.Date,format = "%m/%d/%Y")
   Subscription.Expiration <- as.Date(Subscription.Expiration,format = "%m/%d/%Y")
   Purchase.Amount <- as.numeric(Purchase.Amount)
+  Purchase.Amount <- ifelse(Purchase.Amount > 1000, Purchase.Amount/1000000, Purchase.Amount)
+  Purchase.Amount <- ifelse(Currency == "EUR", Purchase.Amount/1.2, ifelse(Currency == "GBP", Purchase.Amount/1.38, Purchase.Amount))
+  Currency <- as.factor(Currency)
   Send.Count <- as.numeric(Send.Count)
   Open.Count <- as.numeric(Open.Count)
   Click.Count <- as.numeric(Click.Count)
@@ -25,11 +28,23 @@ subs <- within(subscribers2, {
   Purchase.Amount <- round(ifelse(diff_in_days == 0, 0, Purchase.Amount), digits = 2)
 })
 glimpse(subs)
+subs %>% View()
 subs <- subs %>% filter(Send.Count < 2000) 
 nrow(subs)
 
 ggplot(subs, aes(x = Send.Count, y = Unique.Open.Count, color = Auto.Renew)) + 
   geom_point()
 
-glimpse(subs)
-View(subs)
+
+#ggplot(subs, aes(x = Currency)) + geom_bar() +
+  #theme(axis.text.x = element_text(size = 5, angle = 90),
+        #legend.title = element_text(size = 10), 
+        #legend.text = element_text(size = 8),
+       # axis.title.x = element_text(size = 10),
+        #axis.title.y = element_text(size = 10),
+        #axis.ticks.x = element_blank(),
+        #plot.title = element_text(size = 12, face = "bold"),
+        #panel.grid.major = element_blank(),
+       # panel.grid.minor = element_blank(),
+        #panel.border = element_blank(),
+        #panel.background = element_blank())
