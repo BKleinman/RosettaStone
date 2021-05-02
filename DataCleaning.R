@@ -2,8 +2,9 @@ setwd("/Users/brandonkleinman/Desktop/MGSC410/FinalProject")
 #valid prices  7.99   11.99   179.99   299.99
 subscribers <- read.csv("Subscribers.csv")
 library("tidyverse")
-library("e1071")
 library("rsample")
+
+
 
 View(subscribers)
 nrow(subscribers)
@@ -72,6 +73,7 @@ subs_train <- training(subSplit)
 subs_test <- testing(subSplit)
 
 glimpse(subs_train)
+View(subs)
 
 lmPurchase <- lm(Purchase.Amount ~ Free.Trial.User + Email.Subscriber + Auto.Renew + 
                    Lead.Platform + User.Type + Demo.User + Language, data = subs_train)
@@ -79,21 +81,51 @@ summary(lmPurchase)
 superClean <- subs %>% complete.cases()
 clean <- subs[superClean,]
 
-glimpse(df)
-View(df)
 df <- clean %>% select(-c(Free.Trial.Start.Date, Free.Trial.Expiration, Subscription.Start.Date, Subscription.Expiration))
-km.rosetta <- kmeans(df, 2, nstart = 25)
-nrow(df)
+glimpse(df)
+
+ggplot(subs, aes(x = Language)) + geom_bar() + facet_wrap(~Subscription.Event.Type) + theme(axis.text.x = element_text(size = 5, angle = 90),
+  legend.title = element_text(size = 10), 
+  legend.text = element_text(size = 8),
+  axis.title.x = element_text(size = 10),
+  axis.title.y = element_text(size = 10),
+  axis.ticks.x = element_blank(),
+  plot.title = element_text(size = 12, face = "bold"),
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank(),
+  panel.border = element_blank(),
+  panel.background = element_blank())
+
+glimpse(spanish)
+spanish <- subs %>% filter(Language == "ESP")
+ggplot(spanish, aes(x = Country)) + geom_bar()
+
+renewals <- subs %>% filter(Subscription.Event.Type == "RENEWAL")
+numerator <- subs[subs$Language == "ESP" & subs$Subscription.Event.Type == "RENEWAL",]
+denominator <- subs[subs$Language == "ESP" & subs$Subscription.Event.Type == "INITIAL_PURCHASE",]
+nrow(numerator)/nrow(denominator)
+
+mobile_users <-  subs %>% filter(Lead.Platform == "App")
+
+numeratorM <- subs[mobile_users$Language == "ESP" & mobile_users$Subscription.Event.Type == "RENEWAL",]
+denominatorM <- subs[mobile_users$Language == "ESP" & mobile_users$Subscription.Event.Type == "INITIAL_PURCHASE",]
+nrow(numeratorM)/nrow(denominatorM)
+
+numeratorVector <- subs[subs$Subscription.Event.Type == "RENEWAL",]
+denominatorVector <- subs[subs$Subscription.Event.Type == "INITIAL_PURCHASE",]
 
 
-# clustering using gower distance
-library(ggplot2)
-library(cluster)
-library(Rtsne)
-gower_dist = daisy(df, metric = "gower")
-gower_mat = as.matrix(gower_dist)
-k <- 5
-pam_fit <- pam(gower_dist, diss = TRUE, k)
-tsne_obj <- Rtsne(gower_dist, is_distance = TRUE)
-tsne_data <- tsne_obj$Y %>%  data.frame() %>%  setNames(c("X", "Y")) %>%  mutate(cluster = factor(pam_fit$clustering))
-ggplot(aes(x = X, y = Y), data = tsne_data) +  geom_point(aes(color = cluster))
+
+subs2 <- subs %>% filter(Language != "DAR" & Language != "IND" & Language != "KIS" & Language != "LAT" & Language != "PAS" & Language != "URD")
+
+numVector <- c(subs2 %>% group_by(Language) %>% filter(Subscription.Event.Type == "RENEWAL") %>%
+                 summarise(num_users = n()))
+denVector <- c(subs2 %>% group_by(Language) %>% filter(Subscription.Event.Type == "INITIAL_PURCHASE") %>%
+                 summarise(num_users = n()))
+retentions <- c(numVector[["num_users"]]/denVector[["num_users"]])
+retention <- as.data.frame(retentions, row.names = c("ALL", "ARA", "CHI", "DEU", "EBR", "ENG", "ESC", "ESP", "FAR", "FRA", "GLE", "GRK",
+                                                     "HEB", "HIN", "ITA", "JPN", "KOR", "NED",
+                                                     "POL", "POR", "RUS", "SVE", "TGL", "TUR", "VIE"))
+View(retention)
+denVector[["Language"]]
+
