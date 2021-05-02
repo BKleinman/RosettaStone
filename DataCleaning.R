@@ -3,6 +3,7 @@ setwd("/Users/brandonkleinman/Desktop/MGSC410/FinalProject")
 subscribers <- read.csv("Subscribers.csv")
 library("tidyverse")
 library("e1071")
+library("rsample")
 
 View(subscribers)
 nrow(subscribers)
@@ -20,6 +21,7 @@ subs <- within(subscribers2, {
   Push.Notifications <- as.factor(Push.Notifications)
   Email.Subscriber <- as.factor(Email.Subscriber)
   Lead.Platform <- as.factor(Lead.Platform)
+  Free.Trial.User <-  as.factor(Free.Trial.User)
   User.Type <- as.factor(User.Type)
   Country <- as.factor(Country)
   Auto.Renew <- as.factor(Auto.Renew)
@@ -61,5 +63,37 @@ ggplot(subs, aes(x = Send.Count, y = Unique.Open.Count, color = Auto.Renew)) +
         #panel.background = element_blank())
 
 names(subs)
+write.csv(subs, file = "/Users/brandonkleinman/Desktop/MGSC410/FinalProject/cleandata.csv")
 glimpse(subs)
 
+set.seed(410)
+subSplit <- initial_split(subs, p = 0.8)
+subs_train <- training(subSplit)
+subs_test <- testing(subSplit)
+
+glimpse(subs_train)
+
+lmPurchase <- lm(Purchase.Amount ~ Free.Trial.User + Email.Subscriber + Auto.Renew + 
+                   Lead.Platform + User.Type + Demo.User + Language, data = subs_train)
+summary(lmPurchase)
+superClean <- subs %>% complete.cases()
+clean <- subs[superClean,]
+
+glimpse(df)
+View(df)
+df <- clean %>% select(-c(Free.Trial.Start.Date, Free.Trial.Expiration, Subscription.Start.Date, Subscription.Expiration))
+km.rosetta <- kmeans(df, 2, nstart = 25)
+nrow(df)
+
+
+# clustering using gower distance
+library(ggplot2)
+library(cluster)
+library(Rtsne)
+gower_dist = daisy(df, metric = "gower")
+gower_mat = as.matrix(gower_dist)
+k <- 5
+pam_fit <- pam(gower_dist, diss = TRUE, k)
+tsne_obj <- Rtsne(gower_dist, is_distance = TRUE)
+tsne_data <- tsne_obj$Y %>%  data.frame() %>%  setNames(c("X", "Y")) %>%  mutate(cluster = factor(pam_fit$clustering))
+ggplot(aes(x = X, y = Y), data = tsne_data) +  geom_point(aes(color = cluster))
