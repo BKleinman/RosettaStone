@@ -16,7 +16,8 @@ subs <- within(subscribers2, {
   Subscription.Start.Date <- as.Date(Subscription.Start.Date,format = "%m/%d/%Y")
   Subscription.Expiration <- as.Date(Subscription.Expiration,format = "%m/%d/%Y")
   Purchase.Amount <- as.numeric(Purchase.Amount)
-  Purchase.Amount <- ifelse(Purchase.Amount > 1000, Purchase.Amount/1000000, Purchase.Amount)
+  Purchase.Amount <- ifelse(Purchase.Amount > 1000000, Purchase.Amount/10000000000, Purchase.Amount)
+  Purchase.Amount <- ifelse(Purchase.Amount > 1000, Purchase.Amount/10000000, Purchase.Amount)
   Purchase.Amount <- ifelse(Currency == "EUR", Purchase.Amount/1.2, ifelse(Currency == "GBP", Purchase.Amount/1.38, Purchase.Amount))
   Currency <- as.factor(Currency)
   Push.Notifications <- as.factor(Push.Notifications)
@@ -40,6 +41,8 @@ subs <- within(subscribers2, {
   diff_in_months = round(diff_in_days/30)
   diff_in_years = diff_in_days/365
   Purchase.Amount <- round(ifelse(diff_in_days == 0, 0, Purchase.Amount), digits = 2)
+  Purchase.Amount <- ifelse((Subscription.Type == "Limited" & diff_in_years == 1), 95.88, Purchase.Amount)
+  Purchase.Amount <- ifelse(Subscription.Expiration == as.Date("2099-01-01"), 299.99, Purchase.Amount)
 })
 glimpse(subs)
 subs %>% View()
@@ -128,4 +131,50 @@ retention <- as.data.frame(retentions, row.names = c("ALL", "ARA", "CHI", "DEU",
                                                      "POL", "POR", "RUS", "SVE", "TGL", "TUR", "VIE"))
 View(retention)
 denVector[["Language"]]
+
+write.csv(retention, file = "/Users/brandonkleinman/Desktop/MGSC410/FinalProject/retention.csv")
+
+
+ggplot(subs, aes(x = Language, y = Purchase.Amount)) + geom_boxplot() + 
+  theme(axis.text.x = element_text(size = 5, angle = 90),
+  legend.title = element_text(size = 10), 
+  legend.text = element_text(size = 8),
+  axis.title.x = element_text(size = 10),
+  axis.title.y = element_text(size = 10),
+  axis.ticks.x = element_blank(),
+  plot.title = element_text(size = 12, face = "bold"),
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank(),
+  panel.border = element_blank(),
+  panel.background = element_blank())
+
+summary(subs)
+subs <- subs %>% filter(Currency == "USD" || Currency == "GBP" || Currency == "EUR")
+outliers <- subs %>% filter(Purchase.Amount > 300)
+subs <- subs %>% filter(Purchase.Amount < 500)
+View(outliers)
+
+
+ggplot(subs, aes(x = Country, y = Purchase.Amount)) + geom_boxplot() + 
+  theme(axis.text.x = element_text(size = 5, angle = 90),
+        legend.title = element_text(size = 10), 
+        legend.text = element_text(size = 8),
+        axis.title.x = element_text(size = 10),
+        axis.title.y = element_text(size = 10),
+        axis.ticks.x = element_blank(),
+        plot.title = element_text(size = 12, face = "bold"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank())
+
+nrow(subs)
+write.csv(subs, file = "/Users/brandonkleinman/Desktop/MGSC410/FinalProject/cleanData.csv")
+
+t.test(Purchase.Amount~Email.Subscriber, data = subs, na.rm = T)
+#Email subscribers tend to spend more than those who do not subscribe to emails
+glimpse(subs)
+pairwise.t.test(subs$Purchase.Amount, subs$Language, p.adj = "bonf")
+pairwise.t.test(subs$Purchase.Amount, sub$Lead.Platform, data = subs, p.adj = "bonf")
+
 
