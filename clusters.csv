@@ -1,0 +1,100 @@
+Var2,Freq,Var2.1,Freq.1,Var2.2,Freq.2
+   Language,ESP    :912  ,   Language,ESP    :579  ,   Language,ALL    :1108  
+   Language,FRA    :401  ,   Language,FRA    :302  ,   Language,ESP    :  41  
+   Language,ENG    :293  ,   Language,ENG    :181  ,   Language,FRA    :  27  
+   Language,ITA    :221  ,   Language,ITA    :156  ,   Language,TGL    :  25  
+   Language,DEU    :200  ,   Language,DEU    :126  ,   Language,ESC    :  20  
+   Language,ESC    :173  ,   Language,ESC    :125  ,   Language,EBR    :  13  
+   Language,(Other):971  ,   Language,(Other):761  ,   Language,(Other):  96  
+Subscription.Type,Lifetime:   0  ,Subscription.Type,Lifetime:  13  ,Subscription.Type,Lifetime:1330  
+Subscription.Type,Limited :3171  ,Subscription.Type,Limited :2217  ,Subscription.Type,Limited :   0  
+    Subscription.Event.Type,INITIAL_PURCHASE:2498  ,    Subscription.Event.Type,INITIAL_PURCHASE:1705  ,    Subscription.Event.Type,INITIAL_PURCHASE:1330  
+    Subscription.Event.Type,RENEWAL         : 673  ,    Subscription.Event.Type,RENEWAL         : 525  ,    Subscription.Event.Type,RENEWAL         :   0  
+Purchase.Store,App: 316  ,Purchase.Store,App:  65  ,Purchase.Store,App:   2  
+Purchase.Store,Web:2855  ,Purchase.Store,Web:2165  ,Purchase.Store,Web:1328  
+Purchase.Amount,Min.   :     0.0  ,Purchase.Amount,Min.   :      0.0  ,Purchase.Amount,Min.   :  0.0  
+Purchase.Amount,1st Qu.:     0.0  ,Purchase.Amount,1st Qu.:      0.8  ,Purchase.Amount,1st Qu.:189.0  
+Purchase.Amount,Median :    34.0  ,Purchase.Amount,Median :     36.0  ,Purchase.Amount,Median :199.0  
+Purchase.Amount,Mean   :   348.5  ,Purchase.Amount,Mean   :    929.5  ,Purchase.Amount,Mean   :183.7  
+Purchase.Amount,3rd Qu.:    50.0  ,Purchase.Amount,3rd Qu.:     64.5  ,Purchase.Amount,3rd Qu.:206.5  
+Purchase.Amount,Max.   :690000.0  ,Purchase.Amount,Max.   :1600000.0  ,Purchase.Amount,Max.   :398.0  
+Demo.User,No :2171  ,Demo.User,No :2172  ,Demo.User,No :1039  
+Demo.User,Yes:1000  ,Demo.User,Yes:  58  ,Demo.User,Yes: 291  
+Free.Trial.User,No :2563  ,Free.Trial.User,No :2217  ,Free.Trial.User,No :1214  
+Free.Trial.User,Yes: 608  ,Free.Trial.User,Yes:  13  ,Free.Trial.User,Yes: 116  
+Auto.Renew,NULL:   1  ,Auto.Renew,NULL:   0  ,Auto.Renew,NULL:   0  
+Auto.Renew,Off :1754  ,Auto.Renew,Off :1273  ,Auto.Renew,Off :1329  
+Auto.Renew,On  :1416  ,Auto.Renew,On  : 957  ,Auto.Renew,On  :   1  
+     Country,Europe   : 727  ,     Country,Europe   :  15  ,     Country,Europe   : 88  
+     Country,Other    : 165  ,     Country,Other    :2215  ,     Country,Other    :564  
+     Country,US/Canada:2279  ,     Country,US/Canada:   0  ,     Country,US/Canada:678  
+Lead.Platform,App    : 809  ,Lead.Platform,App    :  57  ,Lead.Platform,App    :245  
+Lead.Platform,Unknown:   0  ,Lead.Platform,Unknown:2164  ,Lead.Platform,Unknown:532  
+Lead.Platform,Web    :2362  ,Lead.Platform,Web    :   9  ,Lead.Platform,Web    :553  
+Email.Subscriber,No :1031  ,Email.Subscriber,No :2230  ,Email.Subscriber,No :672  
+Email.Subscriber,Yes:2140  ,Email.Subscriber,Yes:   0  ,Email.Subscriber,Yes:658  
+Push.Notifications,No :   1  ,Push.Notifications,No :2164  ,Push.Notifications,No :533  
+Push.Notifications,Yes:3170  ,Push.Notifications,Yes:  66  ,Push.Notifications,Yes:797  
+  Send.Count,Min.   :  1.00  ,  Send.Count,Min.   :  1.00  ,  Send.Count,Min.   :  1.00  
+  Send.Count,1st Qu.:  4.00  ,  Send.Count,1st Qu.:  3.00  ,  Send.Count,1st Qu.:  6.00  
+  Send.Count,Median : 16.00  ,  Send.Count,Median :  7.00  ,  Send.Count,Median : 10.00  
+  Send.Count,Mean   : 42.26  ,  Send.Count,Mean   : 13.86  ,  Send.Count,Mean   : 51.95  
+  Send.Count,3rd Qu.: 53.75  ,  Send.Count,3rd Qu.: 17.00  ,  Send.Count,3rd Qu.: 86.00  
+  Send.Count,Max.   :333.00  ,  Send.Count,Max.   :151.00  ,  Send.Count,Max.   :681.00  
+  Send.Count,NA's   :813  ,  Send.Count,NA's   :959  ,  Send.Count,NA's   :145  
+  Open.Count,Min.   :  0.000  ,  Open.Count,Min.   :  0.000  ,  Open.Count,Min.   :  0.00  
+  Open.Count,1st Qu.:  0.000  ,  Open.Count,1st Qu.:  0.000  ,  Open.Count,1st Qu.:  0.00  
+  Open.Count,Median :  1.000  ,  Open.Count,Median :  1.000  ,  Open.Count,Median :  4.00  
+  Open.Count,Mean   :  8.679  ,  Open.Count,Mean   :  3.689  ,  Open.Count,Mean   : 20.56  
+  Open.Count,3rd Qu.:  7.000  ,  Open.Count,3rd Qu.:  4.000  ,  Open.Count,3rd Qu.: 18.00  
+  Open.Count,Max.   :311.000  ,  Open.Count,Max.   :110.000  ,  Open.Count,Max.   :678.00  
+  Open.Count,NA's   :813  ,  Open.Count,NA's   :959  ,  Open.Count,NA's   :145  
+ Click.Count,Min.   :  0.000  , Click.Count,Min.   :  0.0000  , Click.Count,Min.   :  0.000  
+ Click.Count,1st Qu.:  0.000  , Click.Count,1st Qu.:  0.0000  , Click.Count,1st Qu.:  0.000  
+ Click.Count,Median :  0.000  , Click.Count,Median :  0.0000  , Click.Count,Median :  0.000  
+ Click.Count,Mean   :  2.232  , Click.Count,Mean   :  0.6168  , Click.Count,Mean   :  5.317  
+ Click.Count,3rd Qu.:  0.000  , Click.Count,3rd Qu.:  0.0000  , Click.Count,3rd Qu.:  5.000  
+ Click.Count,Max.   :292.000  , Click.Count,Max.   :105.0000  , Click.Count,Max.   :415.000  
+ Click.Count,NA's   :813  , Click.Count,NA's   :959  , Click.Count,NA's   :145  
+Unique.Open.Count,Min.   :  0.000  ,Unique.Open.Count,Min.   : 0.000  ,Unique.Open.Count,Min.   :  0.000  
+Unique.Open.Count,1st Qu.:  0.000  ,Unique.Open.Count,1st Qu.: 0.000  ,Unique.Open.Count,1st Qu.:  0.000  
+Unique.Open.Count,Median :  1.000  ,Unique.Open.Count,Median : 1.000  ,Unique.Open.Count,Median :  2.000  
+Unique.Open.Count,Mean   :  4.173  ,Unique.Open.Count,Mean   : 1.521  ,Unique.Open.Count,Mean   :  9.398  
+Unique.Open.Count,3rd Qu.:  3.000  ,Unique.Open.Count,3rd Qu.: 2.000  ,Unique.Open.Count,3rd Qu.:  8.000  
+Unique.Open.Count,Max.   :196.000  ,Unique.Open.Count,Max.   :55.000  ,Unique.Open.Count,Max.   :190.000  
+Unique.Open.Count,NA's   :813  ,Unique.Open.Count,NA's   :959  ,Unique.Open.Count,NA's   :145  
+Unique.Click.Count,Min.   : 0.0000  ,Unique.Click.Count,Min.   :0.000  ,Unique.Click.Count,Min.   : 0.00  
+Unique.Click.Count,1st Qu.: 0.0000  ,Unique.Click.Count,1st Qu.:0.000  ,Unique.Click.Count,1st Qu.: 0.00  
+Unique.Click.Count,Median : 0.0000  ,Unique.Click.Count,Median :0.000  ,Unique.Click.Count,Median : 0.00  
+Unique.Click.Count,Mean   : 0.3851  ,Unique.Click.Count,Mean   :0.144  ,Unique.Click.Count,Mean   : 1.09  
+Unique.Click.Count,3rd Qu.: 0.0000  ,Unique.Click.Count,3rd Qu.:0.000  ,Unique.Click.Count,3rd Qu.: 1.00  
+Unique.Click.Count,Max.   :19.0000  ,Unique.Click.Count,Max.   :3.000  ,Unique.Click.Count,Max.   :36.00  
+Unique.Click.Count,NA's   :813  ,Unique.Click.Count,NA's   :959  ,Unique.Click.Count,NA's   :145  
+diff_in_years,Min.   :0.08219  ,diff_in_years,Min.   : 0.08219  ,diff_in_years,Min.   :78.81  
+diff_in_years,1st Qu.:0.26027  ,diff_in_years,1st Qu.: 0.25205  ,diff_in_years,1st Qu.:78.84  
+diff_in_years,Median :0.50685  ,diff_in_years,Median : 0.50137  ,diff_in_years,Median :78.88  
+diff_in_years,Mean   :0.74473  ,diff_in_years,Mean   : 1.15336  ,diff_in_years,Mean   :78.98  
+diff_in_years,3rd Qu.:1.00274  ,diff_in_years,3rd Qu.: 1.00000  ,diff_in_years,3rd Qu.:78.91  
+diff_in_years,Max.   :3.89041  ,diff_in_years,Max.   :79.97260  ,diff_in_years,Max.   :80.30  
+diff_in_years,NA,diff_in_years,NA,diff_in_years,NA
+diff_in_months,Min.   : 1.000  ,diff_in_months,Min.   :  1.00  ,diff_in_months,Min.   :959  
+diff_in_months,1st Qu.: 3.000  ,diff_in_months,1st Qu.:  3.00  ,diff_in_months,1st Qu.:959  
+diff_in_months,Median : 6.000  ,diff_in_months,Median :  6.00  ,diff_in_months,Median :960  
+diff_in_months,Mean   : 8.925  ,diff_in_months,Mean   : 13.91  ,diff_in_months,Mean   :961  
+diff_in_months,3rd Qu.:12.000  ,diff_in_months,3rd Qu.: 12.00  ,diff_in_months,3rd Qu.:960  
+diff_in_months,Max.   :47.000  ,diff_in_months,Max.   :973.00  ,diff_in_months,Max.   :977  
+diff_in_months,NA,diff_in_months,NA,diff_in_months,NA
+ diff_in_days,Min.   :  30.0  , diff_in_days,Min.   :   30  , diff_in_days,Min.   :28765  
+ diff_in_days,1st Qu.:  95.0  , diff_in_days,1st Qu.:   92  , diff_in_days,1st Qu.:28776  
+ diff_in_days,Median : 185.0  , diff_in_days,Median :  183  , diff_in_days,Median :28791  
+ diff_in_days,Mean   : 271.8  , diff_in_days,Mean   :  421  , diff_in_days,Mean   :28829  
+ diff_in_days,3rd Qu.: 366.0  , diff_in_days,3rd Qu.:  365  , diff_in_days,3rd Qu.:28803  
+ diff_in_days,Max.   :1420.0  , diff_in_days,Max.   :29190  , diff_in_days,Max.   :29311  
+ diff_in_days,NA, diff_in_days,NA, diff_in_days,NA
+   cluster,Min.   :1  ,   cluster,Min.   :2  ,   cluster,Min.   :3  
+   cluster,1st Qu.:1  ,   cluster,1st Qu.:2  ,   cluster,1st Qu.:3  
+   cluster,Median :1  ,   cluster,Median :2  ,   cluster,Median :3  
+   cluster,Mean   :1  ,   cluster,Mean   :2  ,   cluster,Mean   :3  
+   cluster,3rd Qu.:1  ,   cluster,3rd Qu.:2  ,   cluster,3rd Qu.:3  
+   cluster,Max.   :1  ,   cluster,Max.   :2  ,   cluster,Max.   :3  
+   cluster,NA,   cluster,NA,   cluster,NA
